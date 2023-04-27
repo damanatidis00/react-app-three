@@ -29,7 +29,7 @@ export default function Forecast() {
                 </span>
                 <a
                   className="temp-indicator active"
-                  href="#"
+                  href="https://www.google.com/"
                   id="celcius-indicator"
                 >
                   ℃
