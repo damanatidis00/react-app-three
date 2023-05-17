@@ -3,11 +3,18 @@ import axios from "axios";
 
 export default function Forecast() {
   const [ready, setReady] = useState(false);
-  let [temperature, setTemperature] = useState(null);
+  let [weatherData, setWeatherData] = useState({});
 
   function handleResponse(response) {
     console.log(response);
-    setTemperature(Math.round(response.data.temperature.current));
+    setWeatherData({
+      temperature: Math.round(response.data.temperature.current),
+      city: response.data.city,
+      wind: response.data.wind.speed,
+      description: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
+    });
+
     setReady(true);
   }
 
@@ -16,13 +23,13 @@ export default function Forecast() {
       <div className="container border justify-content-center">
         <div className="row">
           <div className="col">
-            <h1 id="city">New York City</h1>
+            <h1 id="city">{weatherData.city}</h1>
             <h2 id="date">Saturday, October 15th, 2022</h2>
             <h3 id="time">9:52PM</h3>
             <ul className="weather-description">
-              <li id="description">Description</li>
-              <li id="wind">Wind</li>
-              <li id="humidity">Humidity</li>
+              <li id="description">{weatherData.description}</li>
+              <li id="wind">Wind: {weatherData.wind}</li>
+              <li id="humidity">Humidity: {weatherData.humidity}</li>
             </ul>
           </div>
 
@@ -36,7 +43,7 @@ export default function Forecast() {
               <div className="col justify-content-center">
                 <h2 id="temp-display" className="justify-content-center">
                   <span className="justify-content-center" id="temperature">
-                    {temperature}
+                    {weatherData.temperature}
                   </span>
                   <a
                     className="temp-indicator active"
