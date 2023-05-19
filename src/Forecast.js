@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import FormattedDate from "./FormattedDate.js";
+import FormattedTime from "./FormattedTime.js";
 export default function Forecast() {
   const [ready, setReady] = useState(false);
   let [weatherData, setWeatherData] = useState({});
@@ -13,6 +14,7 @@ export default function Forecast() {
       wind: response.data.wind.speed,
       description: response.data.condition.description,
       humidity: response.data.temperature.humidity,
+      date: new Date(response.data.time * 1000),
     });
 
     setReady(true);
@@ -24,8 +26,12 @@ export default function Forecast() {
         <div className="row">
           <div className="col">
             <h1 id="city">{weatherData.city}</h1>
-            <h2 id="date">Saturday, October 15th, 2022</h2>
-            <h3 id="time">9:52PM</h3>
+            <h2 id="date">
+              <FormattedDate date={weatherData.date} />
+            </h2>
+            <h3 id="time">
+              <FormattedTime date={weatherData.date} />
+            </h3>
             <ul className="weather-description">
               <li id="description">{weatherData.description}</li>
               <li id="wind">Wind: {weatherData.wind}</li>
