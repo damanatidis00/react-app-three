@@ -1,4 +1,3 @@
-import Searchbar from "./Searchbar.js";
 import Location from "./Location.js";
 import Forecast from "./Forecast.js";
 import Footer from "./Footer.js";
@@ -8,9 +7,8 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Searchbar />
         <Location />
-        <Forecast />
+        <Forecast defaultCity="New York" />
         <Footer />
       </div>
     </div>
