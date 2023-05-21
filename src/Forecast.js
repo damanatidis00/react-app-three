@@ -9,6 +9,7 @@ export default function Forecast(props) {
   let [weatherData, setWeatherData] = useState({});
 
   function handleResponse(response) {
+    console.log(response);
     setWeatherData({
       temperature: Math.round(response.data.temperature.current),
       city: response.data.city,
@@ -16,6 +17,8 @@ export default function Forecast(props) {
       description: response.data.condition.description,
       humidity: response.data.temperature.humidity,
       date: new Date(response.data.time * 1000),
+      icon: response.data.condition.icon,
+      iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${weatherData.icon}.png`,
     });
 
     setReady(true);
@@ -29,6 +32,7 @@ export default function Forecast(props) {
   }
   function handleSubmit(event) {
     event.preventDefault();
+
     search();
   }
 
@@ -78,9 +82,12 @@ export default function Forecast(props) {
             <div className="col gx-0 justify-content-center">
               <div className="row justify-content-center">
                 <div className="col">
-                  <p className="sun-emoji" id="weather-icon">
-                    ☀️
-                  </p>
+                  <img
+                    className="sun-emoji"
+                    id="weather-icon"
+                    src={`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${weatherData.icon}.png`}
+                    alt={weatherData.description}
+                  />
                 </div>
                 <div className="col justify-content-center">
                   <h2 id="temp-display" className="justify-content-center">
