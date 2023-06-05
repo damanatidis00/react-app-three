@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import FormattedDate from "./FormattedDate.js";
 import FormattedTime from "./FormattedTime.js";
+import WeatherTemperature from "./WeatherTemperature.js";
 export default function Forecast(props) {
   const [city, setCity] = useState(props.defaultCity);
 
@@ -91,16 +92,7 @@ export default function Forecast(props) {
                 </div>
                 <div className="col justify-content-center">
                   <h2 id="temp-display" className="justify-content-center">
-                    <span className="justify-content-center" id="temperature">
-                      {weatherData.temperature}
-                    </span>
-                    <a
-                      className="temp-indicator active"
-                      href="https://www.google.com/"
-                      id="celcius-indicator"
-                    >
-                      ℃
-                    </a>
+                    <WeatherTemperature celcius={weatherData.temperature} />
                   </h2>
                 </div>
               </div>
