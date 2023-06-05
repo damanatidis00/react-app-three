@@ -151,3 +151,7 @@ a:hover {
   text-decoration-color: none;
   color: black;
 }
+
+.footer {
+  font-size: 12px;
+}
