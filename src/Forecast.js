@@ -19,7 +19,7 @@ export default function Forecast(props) {
       humidity: response.data.temperature.humidity,
       date: new Date(response.data.time * 1000),
       icon: response.data.condition.icon,
-      iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${weatherData.icon}.png`,
+      iconUrl: `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${weatherData.icon}.png`,
     });
 
     setReady(true);
@@ -86,7 +86,7 @@ export default function Forecast(props) {
                   <img
                     className="sun-emoji"
                     id="weather-icon"
-                    src={`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${weatherData.icon}.png`}
+                    src={`https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${weatherData.icon}.png`}
                     alt={weatherData.description}
                   />
                 </div>
