@@ -11,7 +11,6 @@ export default function Forecast(props) {
   let [weatherData, setWeatherData] = useState({});
 
   function handleResponse(response) {
-    console.log(response);
     setWeatherData({
       temperature: Math.round(response.data.temperature.current),
       city: response.data.city,
