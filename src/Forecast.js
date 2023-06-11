@@ -3,6 +3,7 @@ import axios from "axios";
 import FormattedDate from "./FormattedDate.js";
 import FormattedTime from "./FormattedTime.js";
 import WeatherTemperature from "./WeatherTemperature.js";
+import WeatherForecast from "./WeatherForecast.js";
 export default function Forecast(props) {
   const [city, setCity] = useState(props.defaultCity);
 
@@ -101,9 +102,7 @@ export default function Forecast(props) {
 
           <br />
 
-          <div className="row">
-            <div className="col" id="weather-card"></div>
-          </div>
+          <WeatherForecast city={weatherData.city} />
         </div>
       </div>
     );
